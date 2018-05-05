@@ -17,15 +17,44 @@
       </ion-segment-button>
     </ion-segment>
   </div>
+
+  <div [ngSwitch]="from">
+    <ion-list *ngSwitchCase="'costCalculator'">
+
+      <ion-item>
+        <ion-label>From Currency</ion-label>
+        <ion-select [(ngModel)]="currencyType">
+          <ion-option *ngFor="let user of users" [value]="user"></ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>To Currency</ion-label>
+        <ion-select [(ngModel)]="currencyType">
+          <ion-option *ngFor="let user of users" [value]="user"></ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Amount</ion-label>
+        <ion-input>
+        </ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button (click)="onClubSubmit()" type="submit" block>CALCULATE</button>
+      </div>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'moneyTracker'">
+
+      <div padding>
+        <button ion-button (click)="onClubSubmit()" type="submit" block>SUBMIT</button>
+      </div>
+    </ion-list>
+  </div>
 </ion-content>
 
-<ion-content>
-  <ion-list inset>
-    <ion-item *ngFor="let user of users">
-      <h2>{{user.name}}</h2>
-      <p>{{user.email}}</p>
-    </ion-item>
-  </ion-list>
-</ion-content>
 
 
