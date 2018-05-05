@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Currency Exchange App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div padding>
+    <ion-segment [(ngModel)]="from">
+      <ion-segment-button value="costCalculator">
+        Cost Calculator
+      </ion-segment-button>
+      <ion-segment-button value="moneyTracker">
+        Money Tracker
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-content>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let user of users">
+      <h2>{{user.name}}</h2>
+      <p>{{user.email}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
