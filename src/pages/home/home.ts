@@ -8,7 +8,11 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class HomePage {
 
-  users: any;
+  currencyRates: any;
+  currencyType: any;
+  fromType: any;
+  toType: any;
+  amount: any;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
     this.getUsers();
@@ -18,10 +22,16 @@ export class HomePage {
     this.restProvider.getUsers()
       .then(data => {
         let keys = Object.keys(data);
-        this.users = data[keys[4]];
-        this.users = Object.keys(this.users);
-        console.log(this.users);
+        this.currencyRates = data[keys[4]];
+        this.currencyType = Object.keys(this.currencyRates);
       });
+  }
+
+  onCalculatorSubmit() {
+    let cost = this.amount * (this.currencyRates[this.toType]/this.currencyRates[this.fromType]);
+    this.amount = Number(this.amount).toFixed(2);
+    cost = Number(cost).toFixed(2);
+    document.getElementById("convertedCost").innerHTML = "<p>" + this.amount + " " + this.fromType + " = " + cost + " " + this.toType + "</p>"
   }
 
 

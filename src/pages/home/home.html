@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding>
+  <!--
   <div padding>
     <ion-segment [(ngModel)]="from">
       <ion-segment-button value="costCalculator">
@@ -20,33 +21,42 @@
 
   <div [ngSwitch]="from">
     <ion-list *ngSwitchCase="'costCalculator'">
-
+-->
       <ion-item>
-        <ion-label>From Currency</ion-label>
-        <ion-select [(ngModel)]="currencyType">
-          <ion-option *ngFor="let user of users" [value]="user"></ion-option>
+        <ion-label>Convert From</ion-label>
+        <ion-select [(ngModel)]="fromType">
+          <div *ngFor="let ct of currencyType">
+            <ion-option value="{{ct}}">{{ct}}
+            </ion-option>
+          </div>
         </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label>To Currency</ion-label>
-        <ion-select [(ngModel)]="currencyType">
-          <ion-option *ngFor="let user of users" [value]="user"></ion-option>
+        <ion-label>Convert To</ion-label>
+        <ion-select [(ngModel)]="toType">
+          <div *ngFor="let ct of currencyType">
+            <ion-option value="{{ct}}">{{ct}}
+            </ion-option>
+          </div>
         </ion-select>
       </ion-item>
+
 
       <ion-item>
         <ion-label floating>Amount</ion-label>
-        <ion-input>
+        <ion-input [(ngModel)]="amount" name="amount" type="number">
         </ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button (click)="onClubSubmit()" type="submit" block>CALCULATE</button>
+        <button ion-button (click)="onCalculatorSubmit()" type="submit" block>CALCULATE COST</button>
       </div>
 
-    </ion-list>
+  <div id="convertedCost"></div>
 
+  <!--
+    </ion-list>
     <ion-list *ngSwitchCase="'moneyTracker'">
 
       <div padding>
@@ -54,6 +64,7 @@
       </div>
     </ion-list>
   </div>
+ -->
 </ion-content>
 
 
