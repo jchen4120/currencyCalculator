@@ -1,12 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Currency Exchange App
+      Currency Calculator
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
   <!--
   <div padding>
     <ion-segment [(ngModel)]="from">
@@ -57,14 +58,56 @@
 
   <!--
     </ion-list>
+
+
     <ion-list *ngSwitchCase="'moneyTracker'">
 
+      <button ion-button (click)="startNewTracker()" type="submit" block>START NEW TRACKER</button>
+
       <div padding>
-        <button ion-button (click)="onClubSubmit()" type="submit" block>SUBMIT</button>
+
+          <ion-item>
+            <ion-label>Add Money</ion-label>
+            <ion-select [(ngModel)]="addType">
+              <div *ngFor="let ct of currencyType">
+                <ion-option value="{{ct}}">{{ct}}
+                </ion-option>
+              </div>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Amount</ion-label>
+            <ion-input [(ngModel)]="addAmount" name="amount" type="number">
+            </ion-input>
+          </ion-item>
+
+          <button ion-button (click)="addMoney()" type="submit" block>ADD</button>
+
+          <ion-item>
+            <ion-label>Use Money</ion-label>
+            <ion-select [(ngModel)]="useType">
+              <div *ngFor="let ct of currencyType">
+                <ion-option value="{{ct}}">{{ct}}
+                </ion-option>
+              </div>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Amount</ion-label>
+            <ion-input [(ngModel)]="useAmount" name="amount" type="number">
+            </ion-input>
+          </ion-item>
+
+          <button ion-button (click)="useMoney()" type="submit" block>SPEND</button>
+
+          <div id="wallet"></div>
       </div>
     </ion-list>
+
   </div>
- -->
+  -->
 </ion-content>
 
 
